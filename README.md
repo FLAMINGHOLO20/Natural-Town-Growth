@@ -1,1 +1,1 @@
-# Natural-Town-Growth
+# Natural Town Growth – Mod.io Edition\n\nCustomizable town growth with modding API.
