@@ -12,8 +12,8 @@ local config = {
     decayRate = 0.05,
 
     -- Custom Growth Curves
-    modVersion = "v1.4-update5-8",
-    growthProfile = "Balanced",  -- Options: Balanced, DenseMetro, SprawlingSuburb, IndustrialHub
+    modVersion = "v1.5-update9-11",
+    growthProfile = "Balanced",
     growthProfiles = {
         Balanced = { res = 1.0, com = 1.0, ind = 1.0 },
         DenseMetro = { res = 1.5, com = 1.2, ind = 0.8 },
@@ -21,15 +21,22 @@ local config = {
         IndustrialHub = { res = 0.7, com = 0.9, ind = 1.5 }
     },
 
-    -- Historical Bias & Infrastructure
+    -- Historical & Infrastructure
     historicalWeight = 0.5,
     infrastructureWeight = 1.0,
 
-    -- New factors for v1.4
-    geographyWeight = 1.0,        -- Influence of terrain/resources
-    trafficWeight = 1.0,          -- Influence of congestion
-    industryWeight = 1.0,         -- Influence of local industry output
-    difficultyMode = "Normal",    -- Options: Easy, Normal, Hard
+    -- Geography, Traffic, Industry, Difficulty
+    geographyWeight = 1.0,
+    trafficWeight = 1.0,
+    industryWeight = 1.0,
+    difficultyMode = "Normal",
     difficultyMultiplier = { Easy = 1.2, Normal = 1.0, Hard = 0.8 },
+
+    -- New for Events & Randomness
+    enableRandomEvents = true,
+    randomEventMagnitude = 0.1, -- ±10% growth change per month
+
+    -- Dynamic Config Reload
+    configFilePath = "config.lua"
 }
 return config
