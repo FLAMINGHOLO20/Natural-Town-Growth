@@ -1,185 +1,157 @@
-# Natural Town Growth (Mod.io Edition)
+Natural Town Growth — v2.0 (Final Release)
 
-This mod enhances the **Natural Town Growth** system for Transport Fever 2 by making it configurable, performance-friendly, and more balanced.
+This release completes the Natural Town Growth mod for Transport Fever 2, adding Debug & Visualization Tools and a Compatibility Layer, while retaining all previous features from v1.5 and earlier.
 
-## ✨ Features
-- Smooth growth progression (no runaway exponential growth)
-- Configurable max town size and growth rate
-- Performance-friendly update intervals
-- Growth influenced by cargo delivery and transport reachability
-- Optional decay system (towns shrink if undersupplied or isolated)
-- Traffic penalty slows growth when roads are congested
+✨ Features
 
-## ⚙️ Configuration
-Edit the `config.lua` file to customize gameplay.
+Smooth, realistic town growth with multiple influencing factors
 
-Example parameters:
-```lua
-growthBlendFactor = 0.5    -- Blend between starting capacity and calculated growth
-maxTownSize = 5000         -- Cap for town population
-updateIntervalMonths = 3   -- Update frequency (higher = better performance)
-cargoInfluence = 1.0       -- Cargo delivery effect
-reachabilityWeight = 1.0   -- Connectivity effect
-trafficPenalty = true      -- Enable slowdown if traffic >80%
-decayEnabled = false       -- Enable town shrinking when isolated
-```
+Custom Growth Curves (Balanced, DenseMetro, SprawlingSuburb, IndustrialHub)
 
-## 📥 Installation
-1. Extract the folder to:
-   ```
-   C:/Users/<YourName>/Documents/Transport Fever 2/mods/
-   ```
-2. Rename the folder if needed, e.g., `flamingholo20_natural_town_growth_1`.
-3. Enable the mod in-game.
+Historical Growth Bias (age-based growth adjustment)
 
-## 📝 Changelog
-### v1.1 (Updated)
-- Added `config.lua` for customization
-- Blended growth for smoother progression
-- Added max town size cap
-- Added traffic penalty & optional decay system
-- Optimized update frequency for performance
+Decay & Shrinkage (optional town reduction when undersupplied or isolated)
 
-# Natural Town Growth — v1.2 (Update 1: Custom Growth Curves)
+Infrastructure Influence (roads, rail, and connectivity)
 
-This release adds **Custom Growth Curves**, allowing players to select different city growth styles via `config.lua`. Each profile changes how Residential, Commercial, and Industrial zones expand.
+Geography-Based Growth (terrain, water access, resources)
 
----
+Traffic & Congestion penalties
 
-## 🔹 New in v1.2
-- Added **growth profiles** in `config.lua`:
-  - **Balanced** (default): Equal growth across all zones.
-  - **DenseMetro**: Fast residential, boosted commercial, weaker industrial.
-  - **SprawlingSuburb**: Strong residential sprawl, weaker commercial/industrial.
-  - **IndustrialHub**: Strong industrial, weaker residential, normal commercial.
-- Modified `mod.lua` to apply selected profile multipliers to town growth.
+Industry Dependency (local industrial output affects growth)
 
----
+Difficulty Modes: Easy, Normal, Hard
 
-## 🔧 How to Use
-1. Open `config.lua`.
-2. Set the desired profile:
-   ```lua
-   growthProfile = "DenseMetro"  -- or "Balanced", "SprawlingSuburb", "IndustrialHub"
+Dynamic Config Reload (edit config.lua externally, changes apply in real-time)
 
-# Natural Town Growth — v1.3 (Update 2–4: Historical Bias, Decay & Infrastructure)
+Events & Randomness (random growth events, seasonal/economic variations)
 
-This release adds **Historical Growth Bias**, **Decay & Shrinkage**, and **Infrastructure Influence**, building on the Custom Growth Curves introduced in v1.2. Town growth is now more dynamic and realistic.
+Performance Optimizations (skip tiny towns, cache calculations)
 
----
+Debug & Visualization Tools (show town growth metrics in console/log)
 
-## 🔹 New Features in v1.3
-1. **Historical Growth Bias**  
-   - Towns grow differently depending on their **age** or past growth patterns.  
-   - Older towns grow more slowly; younger towns can expand faster.  
+Compatibility Layer (safe handling of missing data, mod and map compatibility)
 
-2. **Decay & Shrinkage**  
-   - Towns may **shrink** if underperforming (low cargo delivery, low population).  
-   - Works together with `decayEnabled` and `decayRate` settings in `config.lua`.  
+⚙️ Configuration
 
-3. **Infrastructure Influence**  
-   - Town growth is influenced by **roads, rail, and connectivity**.  
-   - Well-connected towns grow faster; isolated towns grow slower.  
+Edit the config.lua file to customize gameplay. Example parameters:
 
-4. **Custom Growth Curves** (from v1.2)  
-   - Choose growth profiles for different playstyles: `Balanced`, `DenseMetro`, `SprawlingSuburb`, `IndustrialHub`.  
+-- Basic growth settings
+growthBlendFactor = 0.5
+maxTownSize = 5000
+updateIntervalMonths = 3
+baseGrowthRate = 1.0
+cargoInfluence = 1.0
+reachabilityWeight = 1.0
+trafficPenalty = true
+decayEnabled = false
+decayRate = 0.05
 
----
+-- Growth profiles
+growthProfile = "Balanced"
+growthProfiles = {
+    Balanced = { res=1.0, com=1.0, ind=1.0 },
+    DenseMetro = { res=1.5, com=1.2, ind=0.8 },
+    SprawlingSuburb = { res=1.3, com=0.8, ind=0.7 },
+    IndustrialHub = { res=0.7, com=0.9, ind=1.5 }
+}
 
-## 🔧 How to Use
-1. Open `config.lua` to set parameters:
-   ```lua
-   growthProfile = "DenseMetro"          -- choose growth curve
-   historicalWeight = 0.5                -- historical bias influence
-   infrastructureWeight = 1.0            -- infrastructure influence
-   decayEnabled = true                   -- enable shrinkage
-   decayRate = 0.05                       -- shrinkage rate
+-- Historical & Infrastructure
+historicalWeight = 0.5
+infrastructureWeight = 1.0
 
----
+-- Geography, Traffic, Industry, Difficulty
+geographyWeight = 1.0
+trafficWeight = 1.0
+industryWeight = 1.0
+difficultyMode = "Normal"  -- Easy, Normal, Hard
 
-# Natural Town Growth — v1.4 (Updates 5–8: Geography, Traffic, Industry, Difficulty)
+-- Random Events
+enableRandomEvents = true
+randomEventMagnitude = 0.1  -- ±10% monthly growth change
 
-This release significantly improves town growth realism by adding **Geography-Based Growth**, **Traffic & Congestion**, **Industry Dependency**, and **Difficulty Modes**, building on the previous updates including Custom Growth Curves, Historical Bias, Decay, and Infrastructure Influence.
+-- Dynamic Config Reload
+configFilePath = "config.lua"
 
----
+-- Debug & Visualization
+debugMode = false           -- show town growth metrics
+debugUpdateInterval = 12    -- months between debug outputs
 
-## 🔹 New Features in v1.4
+-- Performance
+performanceMode = true      -- skip very small towns for CPU optimization
 
-1. **Geography-Based Growth**
-   - Town growth is influenced by **terrain, water access, and nearby resources**.
-   - Coastal towns, riverside towns, and resource-rich areas grow faster.
-   - Inland or resource-poor towns grow slower.
+📥 Installation
 
-2. **Traffic & Congestion**
-   - Town growth affected by **traffic levels**.
-   - High traffic slows growth; low congestion boosts growth.
-   - Works together with the existing `trafficPenalty` setting.
+Backup previous mod files.
 
-3. **Industry Dependency**
-   - Towns’ growth depends on **local industrial output**.
-   - Strong industrial activity attracts residential and commercial expansion.
-   - Weak industrial output can limit growth.
+Extract the folder to:
 
-4. **Difficulty Modes**
-   - Adjust town growth based on difficulty: `Easy`, `Normal`, `Hard`.
-   - Easy → faster growth, fewer penalties.
-   - Hard → slower growth, more decay/shrinkage penalties.
-
-5. **Previous Features Retained**
-   - Custom Growth Curves (Balanced, DenseMetro, SprawlingSuburb, IndustrialHub)
-   - Historical Growth Bias (town age-based)
-   - Decay & Shrinkage
-   - Infrastructure Influence
-
----
-
-## 🔧 How to Use
-
-1. Open `config.lua` to configure new parameters:
-   ```lua
-   growthProfile = "DenseMetro"           -- growth curve
-   historicalWeight = 0.5                 -- influence of historical growth
-   infrastructureWeight = 1.0             -- roads/rail influence
-   geographyWeight = 1.0                  -- terrain/resource influence
-   trafficWeight = 1.0                     -- congestion influence
-   industryWeight = 1.0                    -- industrial output influence
-   decayEnabled = true                     -- enable shrinkage
-   decayRate = 0.05                        -- shrinkage rate
-   difficultyMode = "Normal"               -- Easy, Normal, Hard
+C:/Users/<YourName>/Documents/Transport Fever 2/mods/
 
 
+Rename the folder if needed (e.g., flamingholo20_natural_town_growth_v2).
 
-# Natural Town Growth — v1.5 (Updates 9–11: Dynamic Config, Events, Performance)
+Enable the mod in-game.
 
-This release adds **Dynamic Config Reload**, **Events & Randomness**, and **Performance Optimizations**, building on all previous updates including Custom Growth Curves, Historical Bias, Decay, Infrastructure, Geography, Traffic, Industry, and Difficulty Modes.
+🔹 How to Use
 
----
+Edit config.lua to tweak growth behavior.
 
-## 🔹 New Features in v1.5
+Changes to config.lua are applied in real-time (Dynamic Config Reload).
 
-1. **Dynamic Config Reload**
-   - Edit `config.lua` externally while the game is running.
-   - The mod automatically detects changes and reloads configuration.
-   - Allows real-time tweaking of growth profiles, weights, difficulty, and other parameters.
+Enable debugMode to see town metrics in the console.
 
-2. **Events & Randomness**
-   - Introduces random growth events for towns.
-   - Examples: economic booms, natural disasters, seasonal growth variations.
-   - Controlled via `enableRandomEvents` and `randomEventMagnitude` in `config.lua`.
+Adjust randomEventMagnitude and other weights to balance gameplay.
 
-3. **Performance Optimizations**
-   - Optional `performanceMode` to skip calculations for very small towns.
-   - Cached calculations for historical and infrastructure factors to reduce CPU load.
-   - Maintains stable performance even on large maps with many towns.
+📝 Changelog
+v2.0 (Final Release)
 
----
+Added Debug & Visualization Tools for in-game town growth metrics
 
-## 🔧 How to Use
+Added Compatibility Layer for safe calculations and mod/map compatibility
 
-1. Open `config.lua` to tweak parameters:
-   ```lua
-   enableRandomEvents = true
-   randomEventMagnitude = 0.1      -- ±10% monthly growth change
-   performanceMode = true          -- skip small towns for performance
+Retained all previous features (v1.5 and earlier)
 
-Inspired by the original **Natural Town Growth** by MrWolfZ. This is the **mod.io edition** maintained by FlamingHolo20.
+v1.5 (Updates 9–11)
+
+Dynamic Config Reload
+
+Events & Randomness
+
+Performance Optimizations
+
+v1.4 (Updates 5–8)
+
+Geography-Based Growth
+
+Traffic & Congestion
+
+Industry Dependency
+
+Difficulty Modes
+
+v1.3 (Updates 2–4)
+
+Historical Growth Bias
+
+Decay & Shrinkage
+
+Infrastructure Influence
+
+v1.2 (Update 1)
+
+Custom Growth Curves
+
+v1.1
+
+Initial mod improvements, traffic penalty, optional decay, performance optimization
+
+🔮 Notes
+
+Inspired by the original Natural Town Growth by MrWolfZ
+
+Maintained by FlamingHolo20 (mod.io edition)
+
+Designed for maximum configurability, realism, and performance
+
+Future updates may include in-game GUI for configuration
