@@ -97,4 +97,54 @@ This release adds **Historical Growth Bias**, **Decay & Shrinkage**, and **Infra
 
 ---
 
+# Natural Town Growth — v1.4 (Updates 5–8: Geography, Traffic, Industry, Difficulty)
+
+This release significantly improves town growth realism by adding **Geography-Based Growth**, **Traffic & Congestion**, **Industry Dependency**, and **Difficulty Modes**, building on the previous updates including Custom Growth Curves, Historical Bias, Decay, and Infrastructure Influence.
+
+---
+
+## 🔹 New Features in v1.4
+
+1. **Geography-Based Growth**
+   - Town growth is influenced by **terrain, water access, and nearby resources**.
+   - Coastal towns, riverside towns, and resource-rich areas grow faster.
+   - Inland or resource-poor towns grow slower.
+
+2. **Traffic & Congestion**
+   - Town growth affected by **traffic levels**.
+   - High traffic slows growth; low congestion boosts growth.
+   - Works together with the existing `trafficPenalty` setting.
+
+3. **Industry Dependency**
+   - Towns’ growth depends on **local industrial output**.
+   - Strong industrial activity attracts residential and commercial expansion.
+   - Weak industrial output can limit growth.
+
+4. **Difficulty Modes**
+   - Adjust town growth based on difficulty: `Easy`, `Normal`, `Hard`.
+   - Easy → faster growth, fewer penalties.
+   - Hard → slower growth, more decay/shrinkage penalties.
+
+5. **Previous Features Retained**
+   - Custom Growth Curves (Balanced, DenseMetro, SprawlingSuburb, IndustrialHub)
+   - Historical Growth Bias (town age-based)
+   - Decay & Shrinkage
+   - Infrastructure Influence
+
+---
+
+## 🔧 How to Use
+
+1. Open `config.lua` to configure new parameters:
+   ```lua
+   growthProfile = "DenseMetro"           -- growth curve
+   historicalWeight = 0.5                 -- influence of historical growth
+   infrastructureWeight = 1.0             -- roads/rail influence
+   geographyWeight = 1.0                  -- terrain/resource influence
+   trafficWeight = 1.0                     -- congestion influence
+   industryWeight = 1.0                    -- industrial output influence
+   decayEnabled = true                     -- enable shrinkage
+   decayRate = 0.05                        -- shrinkage rate
+   difficultyMode = "Normal"               -- Easy, Normal, Hard
+
 Inspired by the original **Natural Town Growth** by MrWolfZ. This is the **mod.io edition** maintained by FlamingHolo20.
