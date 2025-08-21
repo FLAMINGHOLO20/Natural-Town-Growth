@@ -40,6 +40,28 @@ decayEnabled = false       -- Enable town shrinking when isolated
 - Added traffic penalty & optional decay system
 - Optimized update frequency for performance
 
+# Natural Town Growth — v1.2 (Update 1: Custom Growth Curves)
+
+This release adds **Custom Growth Curves**, allowing players to select different city growth styles via `config.lua`. Each profile changes how Residential, Commercial, and Industrial zones expand.
+
+---
+
+## 🔹 New in v1.2
+- Added **growth profiles** in `config.lua`:
+  - **Balanced** (default): Equal growth across all zones.
+  - **DenseMetro**: Fast residential, boosted commercial, weaker industrial.
+  - **SprawlingSuburb**: Strong residential sprawl, weaker commercial/industrial.
+  - **IndustrialHub**: Strong industrial, weaker residential, normal commercial.
+- Modified `mod.lua` to apply selected profile multipliers to town growth.
+
+---
+
+## 🔧 How to Use
+1. Open `config.lua`.
+2. Set the desired profile:
+   ```lua
+   growthProfile = "DenseMetro"  -- or "Balanced", "SprawlingSuburb", "IndustrialHub"
+
 ---
 
 Inspired by the original **Natural Town Growth** by MrWolfZ. This is the **mod.io edition** maintained by FlamingHolo20.
