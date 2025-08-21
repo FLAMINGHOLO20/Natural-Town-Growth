@@ -62,6 +62,39 @@ This release adds **Custom Growth Curves**, allowing players to select different
    ```lua
    growthProfile = "DenseMetro"  -- or "Balanced", "SprawlingSuburb", "IndustrialHub"
 
+# Natural Town Growth — v1.3 (Update 2–4: Historical Bias, Decay & Infrastructure)
+
+This release adds **Historical Growth Bias**, **Decay & Shrinkage**, and **Infrastructure Influence**, building on the Custom Growth Curves introduced in v1.2. Town growth is now more dynamic and realistic.
+
+---
+
+## 🔹 New Features in v1.3
+1. **Historical Growth Bias**  
+   - Towns grow differently depending on their **age** or past growth patterns.  
+   - Older towns grow more slowly; younger towns can expand faster.  
+
+2. **Decay & Shrinkage**  
+   - Towns may **shrink** if underperforming (low cargo delivery, low population).  
+   - Works together with `decayEnabled` and `decayRate` settings in `config.lua`.  
+
+3. **Infrastructure Influence**  
+   - Town growth is influenced by **roads, rail, and connectivity**.  
+   - Well-connected towns grow faster; isolated towns grow slower.  
+
+4. **Custom Growth Curves** (from v1.2)  
+   - Choose growth profiles for different playstyles: `Balanced`, `DenseMetro`, `SprawlingSuburb`, `IndustrialHub`.  
+
+---
+
+## 🔧 How to Use
+1. Open `config.lua` to set parameters:
+   ```lua
+   growthProfile = "DenseMetro"          -- choose growth curve
+   historicalWeight = 0.5                -- historical bias influence
+   infrastructureWeight = 1.0            -- infrastructure influence
+   decayEnabled = true                   -- enable shrinkage
+   decayRate = 0.05                       -- shrinkage rate
+
 ---
 
 Inspired by the original **Natural Town Growth** by MrWolfZ. This is the **mod.io edition** maintained by FlamingHolo20.
