@@ -11,8 +11,8 @@ local config = {
     decayEnabled = false,
     decayRate = 0.05,
 
-    -- New: Custom Growth Curves
-    modVersion = "v1.3-update2-4",
+    -- Custom Growth Curves
+    modVersion = "v1.4-update5-8",
     growthProfile = "Balanced",  -- Options: Balanced, DenseMetro, SprawlingSuburb, IndustrialHub
     growthProfiles = {
         Balanced = { res = 1.0, com = 1.0, ind = 1.0 },
@@ -21,8 +21,15 @@ local config = {
         IndustrialHub = { res = 0.7, com = 0.9, ind = 1.5 }
     },
 
-    -- New parameters for Updates 2-4
-    historicalWeight = 0.5,       -- weight for historical growth bias
-    infrastructureWeight = 1.0,   -- weight for roads/rail influence
+    -- Historical Bias & Infrastructure
+    historicalWeight = 0.5,
+    infrastructureWeight = 1.0,
+
+    -- New factors for v1.4
+    geographyWeight = 1.0,        -- Influence of terrain/resources
+    trafficWeight = 1.0,          -- Influence of congestion
+    industryWeight = 1.0,         -- Influence of local industry output
+    difficultyMode = "Normal",    -- Options: Easy, Normal, Hard
+    difficultyMultiplier = { Easy = 1.2, Normal = 1.0, Hard = 0.8 },
 }
 return config
