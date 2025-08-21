@@ -12,7 +12,7 @@ local config = {
     decayRate = 0.05,
 
     -- Custom Growth Curves
-    modVersion = "v1.5-update9-11",
+    modVersion = "v2.0",
     growthProfile = "Balanced",
     growthProfiles = {
         Balanced = { res = 1.0, com = 1.0, ind = 1.0 },
@@ -32,11 +32,15 @@ local config = {
     difficultyMode = "Normal",
     difficultyMultiplier = { Easy = 1.2, Normal = 1.0, Hard = 0.8 },
 
-    -- New for Events & Randomness
+    -- Random Events
     enableRandomEvents = true,
-    randomEventMagnitude = 0.1, -- ±10% growth change per month
+    randomEventMagnitude = 0.1,
 
     -- Dynamic Config Reload
-    configFilePath = "config.lua"
+    configFilePath = "config.lua",
+
+    -- New for Debug & Visualization
+    debugMode = false,           -- show debug overlays with growth metrics
+    debugUpdateInterval = 12     -- months between debug updates
 }
 return config
