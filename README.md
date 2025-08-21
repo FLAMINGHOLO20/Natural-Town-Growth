@@ -147,4 +147,39 @@ This release significantly improves town growth realism by adding **Geography-Ba
    decayRate = 0.05                        -- shrinkage rate
    difficultyMode = "Normal"               -- Easy, Normal, Hard
 
+
+
+# Natural Town Growth — v1.5 (Updates 9–11: Dynamic Config, Events, Performance)
+
+This release adds **Dynamic Config Reload**, **Events & Randomness**, and **Performance Optimizations**, building on all previous updates including Custom Growth Curves, Historical Bias, Decay, Infrastructure, Geography, Traffic, Industry, and Difficulty Modes.
+
+---
+
+## 🔹 New Features in v1.5
+
+1. **Dynamic Config Reload**
+   - Edit `config.lua` externally while the game is running.
+   - The mod automatically detects changes and reloads configuration.
+   - Allows real-time tweaking of growth profiles, weights, difficulty, and other parameters.
+
+2. **Events & Randomness**
+   - Introduces random growth events for towns.
+   - Examples: economic booms, natural disasters, seasonal growth variations.
+   - Controlled via `enableRandomEvents` and `randomEventMagnitude` in `config.lua`.
+
+3. **Performance Optimizations**
+   - Optional `performanceMode` to skip calculations for very small towns.
+   - Cached calculations for historical and infrastructure factors to reduce CPU load.
+   - Maintains stable performance even on large maps with many towns.
+
+---
+
+## 🔧 How to Use
+
+1. Open `config.lua` to tweak parameters:
+   ```lua
+   enableRandomEvents = true
+   randomEventMagnitude = 0.1      -- ±10% monthly growth change
+   performanceMode = true          -- skip small towns for performance
+
 Inspired by the original **Natural Town Growth** by MrWolfZ. This is the **mod.io edition** maintained by FlamingHolo20.
