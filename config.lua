@@ -20,26 +20,10 @@ local config = {
 
     -- Growth profile definitions
     growthProfiles = {
-        Balanced = {
-            res = 1.0,
-            com = 1.0,
-            ind = 1.0
-        },
-        DenseMetro = {
-            res = 1.5,  -- faster residential growth
-            com = 1.2,  -- commercial slightly boosted
-            ind = 0.8   -- industry slower
-        },
-        SprawlingSuburb = {
-            res = 1.3,  -- residential sprawl
-            com = 0.8,  -- weaker commercial
-            ind = 0.7   -- little industry
-        },
-        IndustrialHub = {
-            res = 0.7,  -- fewer houses
-            com = 0.9,  -- normal commercial
-            ind = 1.5   -- strong industry growth
-        }
+        Balanced = { res = 1.0, com = 1.0, ind = 1.0 },
+        DenseMetro = { res = 1.5, com = 1.2, ind = 0.8 },
+        SprawlingSuburb = { res = 1.3, com = 0.8, ind = 0.7 },
+        IndustrialHub = { res = 0.7, com = 0.9, ind = 1.5 }
     }
 }
 
