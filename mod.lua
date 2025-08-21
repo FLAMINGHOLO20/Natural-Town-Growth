@@ -1,5 +1,6 @@
 local config = require "config"
 
+-- Calculate growth for a given town using base factors + profile multipliers
 function calculateGrowth(town, data)
     local initialCapacity = data.initialCapacity or 100
     local calculatedGrowth = (data.residential + data.commercial + data.industrial) * config.baseGrowthRate
@@ -17,6 +18,15 @@ function calculateGrowth(town, data)
     if config.decayEnabled and data.cargoDelivered < 0.2 then
         totalGrowth = totalGrowth - (data.population * config.decayRate)
     end
+
+    -- Apply growth profile multipliers from config
+    local profile = config.growthProfiles[config.growthProfile] or config.growthProfiles["Balanced"]
+    local resGrowth = (data.residential * config.baseGrowthRate) * (profile.res or 1.0)
+    local comGrowth = (data.commercial * config.baseGrowthRate) * (profile.com or 1.0)
+    local indGrowth = (data.industrial * config.baseGrowthRate) * (profile.ind or 1.0)
+
+    -- Merge into total growth
+    totalGrowth = totalGrowth + resGrowth + comGrowth + indGrowth
 
     totalGrowth = math.min(totalGrowth, config.maxTownSize)
     return totalGrowth
